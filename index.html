@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pempek Atelier - Cita Rasa Otentik Palembang</title>
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1c1a17;
+            --accent-gold: #c5a880;
+            --accent-light: #e6dfd5;
+            --text-light: #f5f5f5;
+            --text-muted: #b5ae9f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Didot', 'Georgia', serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Songket Motif Accent Borders */
+        .songket-divider {
+            height: 16px;
+            background: linear-gradient(45deg, var(--accent-gold) 25%, transparent 25%), 
+                        linear-gradient(-45deg, var(--accent-gold) 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, var(--accent-gold) 75%), 
+                        linear-gradient(-45deg, transparent 75%, var(--accent-gold) 75%);
+            background-size: 16px 16px;
+            background-color: #1a1510;
+            opacity: 0.8;
+            border-top: 1px solid var(--accent-gold);
+            border-bottom: 1px solid var(--accent-gold);
+            width: 100%;
+        }
+
+        /* Header / Hero Section */
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle, #24201a 0%, #121212 100%);
+            position: relative;
+        }
+
+        .logo-ornament {
+            font-size: 24px;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        header p.slogan {
+            font-size: 1.2rem;
+            color: var(--accent-light);
+            font-style: italic;
+            letter-spacing: 1px;
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: 'Lora', 'Times New Roman', serif;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "❖";
+            display: block;
+            font-size: 14px;
+            color: var(--accent-gold);
+            margin-top: 10px;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .menu-item {
+            background-color: var(--bg-card);
+            border: 1px solid #2a251f;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+        }
+
+        .menu-image-box {
+            width: 100%;
+            height: 280px;
+            background-color: #26221d;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            z-index: 2;
+        }
+
+        .menu-item:hover .menu-image-box img {
+            transform: scale(1.06);
+        }
+
+        /* Fallback graphic placeholder styling */
+        .image-placeholder {
+            position: absolute;
+            color: rgba(197, 168, 128, 0.2);
+            font-size: 4rem;
+            z-index: 1;
+        }
+
+        .menu-details {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .menu-details h3 {
+            font-size: 1.5rem;
+            color: var(--accent-light);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+        }
+
+        .menu-price {
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Contact / Footer Section */
+        footer {
+            background: linear-gradient(to top, #090909 0%, #1a1612 100%);
+            padding: 60px 20px;
+            border-top: 1px solid var(--accent-gold);
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-box {
+            max-width: 650px;
+            margin: 0 auto;
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid var(--accent-gold);
+            padding: 40px 30px;
+            border-radius: 4px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* Corner ornaments */
+        .contact-box::before, .contact-box::after {
+            content: "❖";
+            position: absolute;
+            color: var(--accent-gold);
+            font-size: 12px;
+        }
+        .contact-box::before { top: 10px; left: 15px; }
+        .contact-box::after { bottom: 10px; right: 15px; }
+
+        .contact-title {
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            font-family: 'Lora', serif;
+        }
+
+        .contact-name {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .contact-method {
+            margin: 20px 0;
+            font-size: 1.05rem;
+        }
+
+        .contact-method span {
+            color: var(--accent-gold);
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .instagram-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            background: #262019;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(197, 168, 128, 0.4);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .instagram-link:hover {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            box-shadow: 0 0 10px rgba(197, 168, 128, 0.5);
+        }
+
+        .address-box {
+            margin-top: 25px;
+            font-style: normal;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .address-box span {
+            color: var(--accent-gold);
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .address-box p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #555;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Responsive adjustment */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.5rem; }
+            header p.slogan { font-size: 1rem; }
+            .section-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="songket-divider"></div>
+
+    <header>
+        <div class="logo-ornament">❖ ⚜ ❖</div>
+        <h1>Pempek Atelier</h1>
+        <p class="slogan">“Kemewahan Rasa Otentik dalam Setiap Gigitan”</p>
+    </header>
+
+    <div class="songket-divider"></div>
+
+    <div class="container">
+        <h2 class="section-title">Daftar Menu Eksklusif</h2>
+        
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-image-box">
+                    <img src="IMG_20260522_085139.JPG"alt="Pempek Kapal Selam" onerror="this.style.opacity='0.4';">
+                </div>
+                <div class="menu-details">
+                    <h3>Pempek Kapal Selam</h3>
+                    <p class="menu-price">Rp 20.000</p>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-image-box">
+                    <img src="IMG_20260522_085129.JPG"alt="Pempek Lenjer" onerror="this.style.opacity='0.4';">
+                </div>
+                <div class="menu-details">
+                    <h3>Pempek Lenjer</h3>
+                    <p class="menu-price">Rp 10.000</p>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-image-box">
+                    <img src="IMG_20260522_085201.JPG"alt="Kerupuk Ikan 250g" onerror="this.style.opacity='0.4';">
+                </div>
+                <div class="menu-details">
+                    <h3>Kerupuk Ikan (250g)</h3>
+                    <p class="menu-price">Rp 15.000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="contact-box">
+            <div class="contact-title">If you are interested, just contact me directly:</div>
+            <div class="contact-name">Pradnya Paramitha Reswari</div>
+            
+            <div class="contact-method">
+                <span>Dapat melalui:</span>
+                <a href="https://instagram.com/_cloversyy" target="_blank" class="instagram-link">
+                    Instagram : @_cloversyy
+                </a>
+            </div>
+            
+            <div class="address-box">
+                <span>Atau bisa langsung datang ke tempat jualan ku di:</span>
+                <p>📍 Jl. Orang sukses no. 123, RT.01/RW.02</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2026 Pempek Atelier. All Rights Reserved. Palembang Heritage Theme.
+        </div>
+    </footer>
+
+</body>
+</html>
